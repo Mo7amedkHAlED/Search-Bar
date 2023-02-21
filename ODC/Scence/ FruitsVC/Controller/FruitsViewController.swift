@@ -71,18 +71,19 @@ extension FruitsViewController: collectionViewType {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FruitsCollectionViewCell.ID, for: indexPath) as! FruitsCollectionViewCell
         if searchActive {
             cell.setUp(fillteredData[indexPath.row])
-            cell.layer.cornerRadius = 18
-            cell.layer.borderColor = UIColor(named: fruits[indexPath.row].boarderColor ?? " ")?.cgColor
-            cell.layer.borderWidth = 1
+            cellColor(cell, array: fillteredData[indexPath.row])
             return cell
         } else {
             cell.setUp(fruits[indexPath.row])
-            cell.layer.cornerRadius = 18
-            cell.layer.borderColor = UIColor(named: fruits[indexPath.row].boarderColor ?? " ")?.cgColor
-            cell.layer.borderWidth = 1
+            cellColor(cell, array: fruits[indexPath.row])
             return cell
         }
-      
+    }
+    // MARK: -  Cell color for view & border
+    func cellColor(_ cell : UICollectionViewCell, array: FruitsModel ) {
+        cell.layer.cornerRadius = 18
+        cell.layer.borderColor = UIColor(named: array.boarderColor ?? " ")?.cgColor
+        cell.layer.borderWidth = 1
     }
     // MARK: - did Select Item At Method
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
