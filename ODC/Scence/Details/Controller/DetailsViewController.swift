@@ -18,11 +18,14 @@ class DetailsViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationItem.hidesBackButton = true
         setUp()
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     func setUp() {
         ProductImage.image = UIImage(named: productDetails?.image ?? " ")
@@ -31,6 +34,6 @@ class DetailsViewController: UIViewController {
     
     // MARK: - Back Button
     @IBAction func Back(_ sender: UIButton) {
-        popScreen()
+        self.dismiss(animated: true)
     }
 }

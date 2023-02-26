@@ -24,6 +24,7 @@ class FruitsViewController: UIViewController {
         searchControllerSetup()
         loadData()
         registerCell()
+        searchController.navigationItem.hidesBackButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +95,8 @@ extension FruitsViewController: collectionViewType {
         } else {
             vc.productDetails = fruits[indexPath.row]
         }
-        navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     // MARK: - Methods For layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
